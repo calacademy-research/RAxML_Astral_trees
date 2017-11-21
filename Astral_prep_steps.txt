@@ -1,0 +1,93 @@
+############################################################################################################
+# The following are 4 scripts required to run Astral for UCE data generated in a Phyluce pipeline.         #
+# only two of the four files are manually executed ('astral_prep.sh' and 'astral_run.sh').                 #
+# The first script, 'astral_prep.sh', is a shell script that:                                              #
+# 1.  creates directories for each UCE alignment                                                           #
+# 2.  calls an R sript, 'RCmds'                                                                            #
+#                                                                                                          #
+# 3.  RCmds uses 'ips' and 'parallel' libs to convert formats and run many instances of RAxML in parallel  #
+# 4.  RCmds' also calls a third script, 'run_RAxML.sh', which launches parallel RAxML analyses             #
+#                                                                                                          #
+# 5.  The fourth and final script, 'astral_run.sh':                                                        #
+# 6.  creates new directories                                                                              #
+# 7.  moves the RAxMl trees into one of the directories                                                    #
+# 8.  merges all of the trees into a single file                                                           #
+# 9.  moves the bootstrap files into a directory                                                           #
+# 10. creates a file with a list of paths pointing to each bootstrap file                                  #
+# 11. runs Astral.                                                                                         #
+############################################################################################################
+
+###### astral_prep.sh
+
+
+#!/bin/bash
+#make directories for the phylip files with name of uce locus
+for f in uce*.nexus; do
+    dir=$(basename $f .nexus)
+    [ ! -d $dir ] && mkdir $dir
+done
+
+Rscript RCmds
+
+####### RCmds - R code script
+
+# two R depencies (packages) are required, ips and parallel
+# While in R, use install.packages(c("ips", "parallel))
+
+library(ips)
+library(parallel)
+setwd("/data/Phyluce_uce-alignments/mafft-nexus-min75_110117/")
+files=list.files(pattern = '.nexus')
+nex = length(files)
+# get number of files for 1:length(1:n files)
+
+for(i in 1:length(1:nex)){
+        phylip = read.nex(files[i])
+        this.name = files[i]
+        newname=sub(".nexus",".phy",files[i])
+        print(newname)
+        save.path = getwd()
+        save.path = paste(save.path,"/",sub(".nexus","",files[i]),sep = "")
+        write.phy(phylip, file=file.path(save.path, newname), interleave=FALSE)
+}
+phy_files_list = list.files(pattern = "*.phy$", recursive = TRUE, path = getwd(), full.names = TRUE)
+
+cmd =list()
+
+for(i in 1:length(phy_files_list)){
+        cmd[[i]] = paste(getwd(), "/run_RAxML.sh ", phy_files_list[i], sep="")
+}
+
+final_raxml = mclapply(cmd, system, mc.cores=getOption("mc.cores", 48))  ### 48 cores
+
+####### run_RAxML.sh
+
+#!/bin/bash
+cd $(dirname $1)
+id=$(basename $(dirname $1))
+phy=$(basename $1)
+
+~/standard-RAxML/raxmlHPC-AVX -f a -m GTRGAMMA -N 100 -x 12345 -p 25258 -n ${id}.txt -s $phy
+
+####### astral_run.sh - ASTRAL ANALYSIS shell script file
+#!/bin/bash
+# cp gene tree files to single dir from working dir
+mkdir tree_files boot_trees
+
+find . -name "RAxML_bipartitions.*" -exec cp {} tree_files/ \;
+
+# merge all trees into a single file for Astral
+cd tree_files 
+#rename 's/$/\.tre/' RAxML_b*
+sed -n wRAx_genetrees_merge.tre *.txt
+cd ..
+
+# make file with list of paths to bootstrap files
+find . -name "RAxML_bootstrap.*" -exec cp {} boot_trees/ \;
+cd boot_trees
+for file in ./*
+do
+    readlink -f "$file" >> bootstrap.filedir.list.txt
+done
+cd ..
+java -Xmx100G -jar ~/ASTRAL/astral.5.5.6.jar -i tree_files/RAx_genetrees_merge.tre -b boot_trees/bootstrap.filedir.list.txt -r 100 -o SyngUCE_sp_tree.tre
