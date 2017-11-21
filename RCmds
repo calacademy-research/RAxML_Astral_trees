@@ -1,0 +1,28 @@
+# two R depencies (packages) are required, ips and parallel
+# While in R, use install.packages(c("ips", "parallel))
+
+library(ips)
+library(parallel)
+setwd("/data/Phyluce_uce-alignments/mafft-nexus-min75_110117/")
+files=list.files(pattern = '.nexus')
+nex = length(files)
+# get number of files for 1:length(1:n files)
+
+for(i in 1:length(1:nex)){
+       phylip = read.nex(files[i])
+       this.name = files[i]
+       newname=sub(".nexus",".phy",files[i])
+       print(newname)
+       save.path = getwd()
+       save.path = paste(save.path,"/",sub(".nexus","",files[i]),sep = "")
+       write.phy(phylip, file=file.path(save.path, newname), interleave=FALSE)
+}
+phy_files_list = list.files(pattern = "*.phy$", recursive = TRUE, path = getwd(), full.names = TRUE)
+
+cmd =list()
+
+for(i in 1:length(phy_files_list)){
+       cmd[[i]] = paste(getwd(), "/run_RAxML.sh ", phy_files_list[i], sep="")
+}
+
+final_raxml = mclapply(cmd, system, mc.cores=getOption("mc.cores", 48))  ### 48 cores
