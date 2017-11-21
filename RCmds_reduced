@@ -1,5 +1,10 @@
+# this R code runs RAxML in parallel across 48 cores (change the value depending on your systems resources).
+# it is part of the RAxML_Astral_trees set of scripts.
+
 library(parallel)
+
 # change path to match your working directory
+
 setwd("/data/syngnathidUCE/Phyluce_uce-alignments/mafft-nexus-min75_110117/")
 
 phy_files_list = list.files(pattern = "*.reduced$", recursive = TRUE, path = getwd(), full.names = TRUE)
