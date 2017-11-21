@@ -1,9 +1,9 @@
-# two R depencies (packages) are required, ips and parallel
-# While in R, use install.packages(c("ips", "parallel))
+# two R dependencies (packages) are required, ips and parallel
+# While in R, use install.packages(c("ips", "parallel)) to install.
 
 library(ips)
 library(parallel)
-setwd("/data/Phyluce_uce-alignments/mafft-nexus-min75_110117/")
+setwd("/data/syngnathidUCE/Phyluce_uce-alignments/mafft-nexus-min75_110117/")
 files=list.files(pattern = '.nexus')
 nex = length(files)
 # get number of files for 1:length(1:n files)
