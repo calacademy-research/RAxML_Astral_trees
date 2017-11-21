@@ -1,0 +1,14 @@
+library(parallel)
+# change path to match your working directory
+setwd("/data/syngnathidUCE/Phyluce_uce-alignments/mafft-nexus-min75_110117/")
+
+phy_files_list = list.files(pattern = "*.reduced$", recursive = TRUE, path = getwd(), full.names = TRUE)
+
+cmd =list()
+
+for(i in 1:length(phy_files_list)){
+        cmd[[i]] = paste(getwd(), "/run_RAxML_reduced.sh ", phy_files_list[i], sep="")
+}
+
+# make sure your  system has 48 cores or change the 48 to an appropriate number of cores.
+final_raxml = mclapply(cmd, system, mc.cores=getOption("mc.cores", 48))  ### 48 cores
