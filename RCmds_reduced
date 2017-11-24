@@ -1,6 +1,7 @@
 # this R code runs RAxML in parallel across 48 cores - one core per UCE alignment (change the value depending on your systems resources).
 # it is part of the RAxML_Astral_trees set of scripts.
 # The "parallel" R package is required. While in R, install.packages("parallel")
+# RAxML must be run and have produced a .reduced alignment prior to running this script.
 library(parallel)
 
 # change path to match your working directory
