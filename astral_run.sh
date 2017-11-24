@@ -1,7 +1,9 @@
 #!/bin/bash
-# cp gene tree files to single dir from working dir
+
+# Make directories for RAxML trees and bootstrap data
 mkdir tree_files boot_trees
 
+# cp gene tree files to single dir from working dir
 find . -name "RAxML_bipartitions.*" -exec cp {} tree_files/ \;
 
 # merge all trees into a single file for Astral
