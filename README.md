@@ -25,5 +25,6 @@ $git clone https://github.com/calacademy-research/RAxML_Astral_trees.git
 3. Make sure R is installed and that the R libraries ips and parallel are installed. Launch R at the command prompt:
 ```
 $ R
-$>install.packages(c("ips", "parallel"))
+>
+>install.packages(c("ips", "parallel"))
 ```
