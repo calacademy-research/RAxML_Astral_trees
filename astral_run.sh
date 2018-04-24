@@ -21,5 +21,5 @@ do
 done
 cd ..
 
-# the option -Xmx100G gives Java 100GB of RAM, make sure this is appropriate for your system.
-java -Xmx100G -jar ~/ASTRAL/astral.5.5.6.jar -i tree_files/RAx_genetrees_merge.tre -b boot_trees/bootstrap.filedir.list.txt -r 100 -o SyngUCE_sp_tree.tre
+# the option -Xmx100G gives Java 100GB of RAM, make sure this is appropriate for your system. The last item is the name of your final AstralIII tree, edit if you like.
+java -Xmx100G -jar ~/ASTRAL/astral.5.5.6.jar -i tree_files/RAx_genetrees_merge.tre -b boot_trees/bootstrap.filedir.list.txt -r 100 -o My_AstralIII_sp_tree.tre
