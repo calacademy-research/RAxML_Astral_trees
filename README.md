@@ -12,7 +12,7 @@ there are two addition scripts appended with "_reduced" for RAxML and Astral ana
 RCmds_reduced
 Astral_run_reduced.sh
 
-# Tutorial
+## Installation and prep for Ubuntu 16.04:
 1. clone the RAxML_Astral_trees git files to your home directory (or wherever you like):
 
 ``` 
@@ -21,4 +21,9 @@ $git clone https://github.com/calacademy-research/RAxML_Astral_trees.git
 2. You will now have a directory with all required scripts in:
 ```
 ~/RAxML_Astral_trees
+```
+3. Make sure R is installed and that the R libraries ips and parallel are installed. Launch R at the command prompt:
+```
+$ R
+$>install.packages(c("ips", "parallel"))
 ```
