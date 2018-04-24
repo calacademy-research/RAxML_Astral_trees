@@ -64,11 +64,16 @@ If you are not sure of how much RAM your system has, do:
 $sudo lshw -class memory
 ```
 ## Run the scripts
-1. The first step is to run 'astral_prep.sh' from your working directory (this example uses the '~/ABySS/mafft-nexus-min75-taxa' directory). Make sure all of the scripts are executable by you by running the following command for each script:
+1. The first step is to run 'astral_prep.sh' from your working directory (this example uses the '~/ABySS/mafft-nexus-min75-taxa' directory). Make sure all of the scripts are executable by you by running the following command for each script (you may need sudo privileges):
 ```
-$chmod +x astral_prep.sh
+~/ABySS/mafft-nexus-min75-taxa$chmod +x astral_prep.sh
 ```
-The run:
+Then run:
 ```
-$./astral_run.sh
+~/ABySS/mafft-nexus-min75-taxa$./astral_prep.sh
+```
+depending on your server and the number of alignments and taxa you have, this could take hours to days to copmplete.
+2. Once the astral_prep.sh run completes, run the astral-run.sh script:
+```
+~/ABySS/mafft-nexus-min75-taxa$./astral_run.sh
 ```
