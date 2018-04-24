@@ -13,8 +13,12 @@ RCmds_reduced
 Astral_run_reduced.sh
 
 # Tutorial
-1. clone the RAxML_Astral_trees git to your home directory (or wherever you like)
+1. clone the RAxML_Astral_trees git files to your home directory (or wherever you like):
 
 ``` 
 $git clone https://github.com/calacademy-research/RAxML_Astral_trees.git
+```
+2. You will now have a directory with all required scripts in:
+```
+~/RAxML_Astral_trees
 ```
