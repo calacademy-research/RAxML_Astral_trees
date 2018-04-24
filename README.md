@@ -38,7 +38,7 @@ $cd ~/ABySS/mafft-nexus-min75-taxa
 ~/ABySS/mafft-nexus-min75-taxa$ ln -s ~/RAxML_Astral_trees/run_RAxML.sh run_RAxML.sh
 ~/ABySS/mafft-nexus-min75-taxa$ ln -s ~/RAxML_Astral_trees/RCmds RCmds
 ```
-5. YOu must edit the RCmds R script to set your working directory. Our example here is ~/ABySS/mafft-nexus-min75-taxa. Open the RCmds script in your favorite editor (I use vi or nano) and edit the line setwd("/my/working/directory/") to match your working directory. For e.g.:
+5. Y0u must edit the RCmds R script to set your working directory. Our example here is ~/ABySS/mafft-nexus-min75-taxa. Open the RCmds script in your favorite editor (I use vi or nano) and edit the line setwd("/my/working/directory/") to match your working directory. For e.g.:
 ```
 $ setwd("~/ABySS/mafft-nexus-min75-taxa")
 ```
@@ -50,11 +50,11 @@ If you are not sure of the number threads available on your system do:
 ```
 $ cat /proc/cpuinfo | grep processor | wc -l
 ```
-or launch htop, which will show all threads. If youv do not have htop installed do:
+or launch htop, which will show all threads. If you do not have htop installed do:
 ```
 $ sudo apt-get install htop
 ```
-7. You will need to edit the last line of the astral_run.sh file to match your prefered final tree name and the amount of memory in your system. The -Xmx100G flag tell java to use 100GB of RAM. Change this to match your system RAM. The end of this line names your final Astral species tree. Edit as you like.
+7. You will need to edit the last line of the astral_run.sh file to match your prefered final tree name and the amount of memory in your system. The -Xmx100G flag tells java to use 100GB of RAM. Change this to match your system RAM. The last item on this line names your final Astral species tree. Edit as you like.
 ```
 java -Xmx100G -jar ~/ASTRAL/astral.5.5.6.jar -i tree_files/RAx_genetrees_merge.tre -b boot_trees/bootstrap.filedir.list.txt -r 100 -o My_AstralIII_sp_tree.tre
 
@@ -71,7 +71,7 @@ Mem:       1032052     992002      40050         10        230     941896
 -/+ buffers/cache:      49875     982176
 Swap:        76293        682      75611
 ```
-This particular system has a total of 1,032,052MB or 1TB RAM.
+This particular system has a total of 1,032,052MB or 1,000GB or 1TB RAM.
 
 ## Run the scripts
 1. The first step is to run 'astral_prep.sh' from your working directory (this example uses the "\~/ABySS/mafft-nexus-min75-taxa" directory). Make sure all of the scripts are executable by you by running the following command for each script (you may need sudo privileges) (Note:"\~/ABySS/mafft-nexus-min75-taxa$" is your prompt, do not enter this):
