@@ -42,7 +42,7 @@ $cd ~/ABySS/mafft-nexus-min75-taxa
 ```
 $ setwd("~/ABySS/mafft-nexus-min75-taxa")
 ```
-6. You must also edit the RCmds R script to set the number of threads to match what is available on your server. The deafult line is final_raxml = mclapply(cmd, system, mc.cores=getOption("mc.cores", 48))  ### 48 cores. If your server has 16 threads available then replace 48 with 16 as follows:
+6. You must also edit the RCmds R script to set the number of threads to match what is available on your server. The deafult line is final_raxml = mclapply(cmd, system, mc.cores=getOption("mc.cores", 48))  ### 48 threads. If your server has 16 threads available then replace 48 with 16 as follows:
 ```
 $ final_raxml = mclapply(cmd, system, mc.cores=getOption("mc.cores", 16))  ### 16 threads
 ```
