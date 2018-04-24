@@ -13,10 +13,10 @@ RCmds_reduced
 Astral_run_reduced.sh
 
 ## Installation and prep for Ubuntu 16.04:
-1. clone the RAxML_Astral_trees git files to your home directory (or wherever you like):
+1. clone the RAxML_Astral_trees git files to your home directory (or wherever you like) (Note: '$' is your prompt, do not enter this character):
 
 ``` 
-$git clone https://github.com/calacademy-research/RAxML_Astral_trees.git
+$ git clone https://github.com/calacademy-research/RAxML_Astral_trees.git
 ```
 2. You will now have a directory with all required scripts in:
 ```
@@ -48,7 +48,7 @@ $ final_raxml = mclapply(cmd, system, mc.cores=getOption("mc.cores", 16))  ### 1
 ```
 If you are not sure of the number threads available on your system do:
 ```
-$cat /proc/cpuinfo | grep processor | wc -l
+$ cat /proc/cpuinfo | grep processor | wc -l
 ```
 or launch htop, which will show all threads. If youv do not have htop installed do:
 ```
@@ -61,19 +61,19 @@ java -Xmx100G -jar ~/ASTRAL/astral.5.5.6.jar -i tree_files/RAx_genetrees_merge.t
 ```
 If you are not sure of how much RAM your system has, do:
 ```
-$sudo lshw -class memory
+$ sudo lshw -class memory
 ```
 ## Run the scripts
-1. The first step is to run 'astral_prep.sh' from your working directory (this example uses the '~/ABySS/mafft-nexus-min75-taxa' directory). Make sure all of the scripts are executable by you by running the following command for each script (you may need sudo privileges):
+1. The first step is to run 'astral_prep.sh' from your working directory (this example uses the '~/ABySS/mafft-nexus-min75-taxa' directory). Make sure all of the scripts are executable by you by running the following command for each script (you may need sudo privileges) (Note:~/ABySS/mafft-nexus-min75-taxa$ is your prompt, do not enter this):
 ```
-~/ABySS/mafft-nexus-min75-taxa$chmod +x astral_prep.sh
+~/ABySS/mafft-nexus-min75-taxa$ chmod +x astral_prep.sh
 ```
 Then run:
 ```
-~/ABySS/mafft-nexus-min75-taxa$./astral_prep.sh
+~/ABySS/mafft-nexus-min75-taxa$ ./astral_prep.sh
 ```
 depending on your server and the number of alignments and taxa you have, this could take hours to days to copmplete.
 2. Once the astral_prep.sh run completes, run the astral-run.sh script:
 ```
-~/ABySS/mafft-nexus-min75-taxa$./astral_run.sh
+~/ABySS/mafft-nexus-min75-taxa$ ./astral_run.sh
 ```
