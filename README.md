@@ -64,7 +64,7 @@ If you are not sure of how much RAM your system has, do:
 $ sudo lshw -class memory
 ```
 ## Run the scripts
-1. The first step is to run 'astral_prep.sh' from your working directory (this example uses the '~/ABySS/mafft-nexus-min75-taxa' directory). Make sure all of the scripts are executable by you by running the following command for each script (you may need sudo privileges) (Note:~/ABySS/mafft-nexus-min75-taxa$ is your prompt, do not enter this):
+1. The first step is to run 'astral_prep.sh' from your working directory (this example uses the ~/ABySS/mafft-nexus-min75-taxa directory). Make sure all of the scripts are executable by you by running the following command for each script (you may need sudo privileges) (Note:~/ABySS/mafft-nexus-min75-taxa$ is your prompt, do not enter this):
 ```
 ~/ABySS/mafft-nexus-min75-taxa$ chmod +x astral_prep.sh
 ```
