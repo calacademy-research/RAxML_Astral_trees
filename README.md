@@ -73,6 +73,7 @@ Mem:       1032052     992002      40050         10        230     941896
 Swap:        76293        682      75611
 ```
 This particular system has a total of 1,032,052MB or 1,000GB or 1TB RAM.
+9. Depending on which version of RAxML you compiled, you will have to edit the run_RAxML.sh script to match your compiled version of RAxML. Edit the line "~/standard-RAxML/raxmlHPC-AVX -f a -m GTRGAMMA -N 100 -x 12345 -p 25258 -n ${id}.txt -s $phy" to match the location and version of RAxML. For e.g., if you have raxml-PTHREADS-AVX2
 
 ## Run the scripts
 1. The first step is to run 'astral_prep.sh' from your working directory (this example uses the "\~/ABySS/mafft-nexus-min75-taxa" directory). Make sure all of the scripts are executable by you by running the following command for each script (you may need sudo privileges) (Note:"\~/ABySS/mafft-nexus-min75-taxa$" is your prompt, do not enter this):
