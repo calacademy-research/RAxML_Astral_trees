@@ -71,6 +71,8 @@ Mem:       1032052     992002      40050         10        230     941896
 -/+ buffers/cache:      49875     982176
 Swap:        76293        682      75611
 ```
+This particular system has a total of 1,032,052 MB or 1TB RAM.
+
 ## Run the scripts
 1. The first step is to run 'astral_prep.sh' from your working directory (this example uses the "\~/ABySS/mafft-nexus-min75-taxa" directory). Make sure all of the scripts are executable by you by running the following command for each script (you may need sudo privileges) (Note:"\~/ABySS/mafft-nexus-min75-taxa$" is your prompt, do not enter this):
 ```
