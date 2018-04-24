@@ -1,5 +1,5 @@
 # two R dependencies (packages) are required, ips and parallel
-# While in R, use install.packages(c("ips", "parallel)) to install.
+# While in R, use install.packages(c("ips", "parallel")) to install.
 
 library(ips)
 library(parallel)
