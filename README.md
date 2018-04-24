@@ -46,3 +46,16 @@ $ setwd("~/ABySS/mafft-nexus-min75-taxa")
 ```
 $ final_raxml = mclapply(cmd, system, mc.cores=getOption("mc.cores", 16))  ### 16 cores
 ```
+If you are not sure of the number threads available on your system do:
+```
+$cat /proc/cpuinfo | grep processor | wc -l
+```
+or launch htop, which will show all threads. If youv do not have htop installed do:
+```
+$ sudo apt-get install htop
+```
+7. You will need to edit the last line of the astral_run.sh file to match your prefered final tree name and the amount of memory in your system. the -Xmx100G flag tell java to use 100GB of RAM. Chnage this to match your system RAM. The end of this line names your final Astral species tree. edit as you like.
+```
+java -Xmx100G -jar ~/ASTRAL/astral.5.5.6.jar -i tree_files/RAx_genetrees_merge.tre -b boot_trees/bootstrap.filedir.list.txt -r 100 -o My_AstralIII_sp_tree.tre
+
+```
