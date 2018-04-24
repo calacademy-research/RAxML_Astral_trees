@@ -30,7 +30,7 @@ $ R
 ```
 Printed and scrolling on screen, you will see the installation progress. You may get a message that one or both libraries already exists, which should be OK. If you get errors that you cannot resolve, you will have to consult your Sys Admin.
 
-4. There are many ways to organize your data, but the following is what I do. I create symlinks for all of the scripts in the phyluce alignment directory, which contains all of your final uce nexus alignments, ~/ABySS/mafft-nexus-min75-taxa for e.g.:
+4. There are many ways to organize your data, but the following is what I do. I create symlinks for all of the scripts in the phyluce alignment directory (my "working directory"), which contains all of your final uce nexus alignments, ~/ABySS/mafft-nexus-min75-taxa for e.g.:
 ```
 $cd ~/ABySS/mafft-nexus-min75-taxa
 ~/ABySS/mafft-nexus-min75-taxa$ ln -s ~/RAxML_Astral_trees/astral_prep.sh astral_prep.sh
