@@ -13,7 +13,7 @@ RCmds_reduced
 Astral_run_reduced.sh
 
 ## Installation and prep for Ubuntu 16.04:
-1. If you do not have the latest parallel version of RAxML installed, follow the "Compiling RAxML" directions in the [RAxML v8 manual](https://sco.h-its.org/exelixis/resource/download/NewManual.pdf). Be sure to compile one of the two parallele option, MPI or PTHREADS (Note: PTHREADS has several options SSE3, AVX, AVX2. You need to check you CPU to see which of these instructions it supports - SSE3 is slowest, AVX2 is fastest (New Xeon chips support AVX2 as of April 2018).
+1. If you do not have the latest parallel version of RAxML installed, follow the "Compiling RAxML" directions in the [RAxML v8 manual](https://sco.h-its.org/exelixis/resource/download/NewManual.pdf) (ctrl-click to open in new window). Be sure to compile one of the two parallele option, MPI or PTHREADS (Note: PTHREADS has several options SSE3, AVX, AVX2. You need to check you CPU to see which of these instructions it supports - SSE3 is slowest, AVX2 is fastest (New Xeon chips support AVX2 as of April 2018).
 2. Clone the RAxML_Astral_trees git files to your home directory (or wherever you like) (Note: '$' is your prompt, do not enter this character):
 
 ``` 
@@ -83,7 +83,7 @@ Then run:
 ```
 ~/ABySS/mafft-nexus-min75-taxa$ ./astral_prep.sh
 ```
-Depending on your server and the number of alignments and taxa you have, this could take hours to days to complete. If you are running this remotely, I recommend using 'screen' and putting it in the background in case your local terminal or computer crashes and terminates your runs. [How to use screens](https://www.vultr.com/docs/using-screen-on-ubuntu-14-04)
+Depending on your server and the number of alignments and taxa you have, this could take hours to days to complete. If you are running this remotely, I recommend using 'screen' and putting it in the background in case your local terminal or computer crashes and terminates your runs. [How to use screens](https://www.vultr.com/docs/using-screen-on-ubuntu-14-04) (ctrl-click to open in new window).
 
 2. Once the astral_prep.sh run finishes, run the astral-run.sh script:
 ```
