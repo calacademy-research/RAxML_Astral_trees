@@ -83,7 +83,8 @@ Then run:
 ```
 ~/ABySS/mafft-nexus-min75-taxa$ ./astral_prep.sh
 ```
-depending on your server and the number of alignments and taxa you have, this could take hours to days to complete.
+Depending on your server and the number of alignments and taxa you have, this could take hours to days to complete. If you are running this remotely, I recommend using 'screen' and putting it in the background in case your local terminal or computer crashes and terminates your runs. [How to use screens](https://www.vultr.com/docs/using-screen-on-ubuntu-14-04)
+
 2. Once the astral_prep.sh run finishes, run the astral-run.sh script:
 ```
 ~/ABySS/mafft-nexus-min75-taxa$ ./astral_run.sh
