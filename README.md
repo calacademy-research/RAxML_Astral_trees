@@ -11,3 +11,7 @@ If your UCE alignments have a lot of identical sequences, RAxML will generate a 
 there are two addition scripts appended with "_reduced" for RAxML and Astral analyses.
 RCmds_reduced
 Astral_run_reduced.sh
+
+# Tutorial
+1. clone the RAxML_Astral_trees git to your home directory (or wherever you like)
+'''$git clone https://'''
