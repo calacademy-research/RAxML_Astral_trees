@@ -38,11 +38,11 @@ $cd ~/ABySS/mafft-nexus-min75-taxa
 ~/ABySS/mafft-nexus-min75-taxa$ ln -s ~/RAxML_Astral_trees/run_RAxML.sh run_RAxML.sh
 ~/ABySS/mafft-nexus-min75-taxa$ ln -s ~/RAxML_Astral_trees/RCmds RCmds
 ```
-5. YOu must edit the RCmds R script to set your working directory. Our example here is ~/ABySS/mafft-nexus-min75-taxa. Open the RCmds script in your favorite editor (I use vi or nano) and edit the line setwd("/my/working/directory/") to:
+5. YOu must edit the RCmds R script to set your working directory. Our example here is ~/ABySS/mafft-nexus-min75-taxa. Open the RCmds script in your favorite editor (I use vi or nano) and edit the line setwd("/my/working/directory/") to match your working directory. For e.g.:
 ```
 $ setwd("~/ABySS/mafft-nexus-min75-taxa")
 ```
-6. You must also edit the RCmds R script to set the number of threads to match what is available on your server. The deafult line is final_raxml = mclapply(cmd, system, mc.cores=getOption("mc.cores", 48))  ### 48 threads. If your server has 16 threads available then replace 48 with 16 as follows:
+6. You must also edit the RCmds R script to set the number of threads to match what is available on your server. The deafult line is 'final_raxml = mclapply(cmd, system, mc.cores=getOption("mc.cores", 48))  ### 48 threads'. If your server has 16 threads available then replace 48 with 16 as follows:
 ```
 $ final_raxml = mclapply(cmd, system, mc.cores=getOption("mc.cores", 16))  ### 16 threads
 ```
@@ -58,4 +58,8 @@ $ sudo apt-get install htop
 ```
 java -Xmx100G -jar ~/ASTRAL/astral.5.5.6.jar -i tree_files/RAx_genetrees_merge.tre -b boot_trees/bootstrap.filedir.list.txt -r 100 -o My_AstralIII_sp_tree.tre
 
+```
+If you are not sure of how much RAM your system has, do:
+```
+$sudo lshw -class memory
 ```
