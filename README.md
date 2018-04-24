@@ -22,9 +22,18 @@ $git clone https://github.com/calacademy-research/RAxML_Astral_trees.git
 ```
 ~/RAxML_Astral_trees
 ```
-3. Make sure R is installed and that the R libraries ips and parallel are installed. Launch R at the command prompt:
+3. Make sure R is installed and that the R libraries ips and parallel are installed. Launch R at the command prompt (you should see a greater than symbol as your new prompt '>') and enter install.packages(c("ips", "parallel")):
 ```
 $ R
 >
 >install.packages(c("ips", "parallel"))
+```
+Printed and scrolling on screen, you will see the installation progress. You may get a message that one or both libraries already exists, which should be OK. If you get errors that you cannot resolve, you will have to consult your Sys Admin.
+3. There are many ways to organize your data, but the following is what I do. I create symlinks for all of the scripts in the phyluce alignment directory, which contains all of your final uce nexus alignments, ~/ABySS/mafft-nexus-min75-taxa for e.g.:
+```
+$cd ~/ABySS/mafft-nexus-min75-taxa
+~/ABySS/mafft-nexus-min75-taxa$ ln -s ~/RAxML_Astral_trees/astral_prep.sh astral_prep.sh
+~/ABySS/mafft-nexus-min75-taxa$ ln -s ~/RAxML_Astral_trees/astral_run.sh astral_run.sh
+~/ABySS/mafft-nexus-min75-taxa$ ln -s ~/RAxML_Astral_trees/run_RAxML.sh run_RAxML.sh
+~/ABySS/mafft-nexus-min75-taxa$ ln -s ~/RAxML_Astral_trees/RCmds RCmds
 ```
