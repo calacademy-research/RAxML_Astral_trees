@@ -18,7 +18,7 @@ Astral_run_reduced.sh
 ``` 
 $ git clone https://github.com/calacademy-research/RAxML_Astral_trees.git
 ```
-2. You will now have a directory with all required scripts in:
+2. You will now have a directory named 'RAxML_Astral_trees' with all required scripts:
 ```
 ~/RAxML_Astral_trees
 ```
@@ -61,7 +61,15 @@ java -Xmx100G -jar ~/ASTRAL/astral.5.5.6.jar -i tree_files/RAx_genetrees_merge.t
 ```
 If you are not sure of how much RAM your system has, do:
 ```
-$ sudo lshw -class memory
+$ free -m
+```
+This will print to screen something like this:
+```
+bsimison@tdobz:~$ free -m
+             total       used       free     shared    buffers     cached
+Mem:       1032052     992002      40050         10        230     941896
+-/+ buffers/cache:      49875     982176
+Swap:        76293        682      75611
 ```
 ## Run the scripts
 1. The first step is to run 'astral_prep.sh' from your working directory (this example uses the "\~/ABySS/mafft-nexus-min75-taxa" directory). Make sure all of the scripts are executable by you by running the following command for each script (you may need sudo privileges) (Note:"\~/ABySS/mafft-nexus-min75-taxa$" is your prompt, do not enter this):
