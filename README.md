@@ -13,16 +13,17 @@ RCmds_reduced
 Astral_run_reduced.sh
 
 ## Installation and prep for Ubuntu 16.04:
-1. clone the RAxML_Astral_trees git files to your home directory (or wherever you like) (Note: '$' is your prompt, do not enter this character):
+1. If you do not have the latest parallel version of RAxML installed, follow the "Compiling RAxML" directions in the [RAxML v8 manual](https://sco.h-its.org/exelixis/resource/download/NewManual.pdf). Be sure to compile one of the two parallele option, MPI or PTHREADS (Note: PTHREADS has several options SSE3, AVX, AVX2. You need to check you CPU to see which of these instructions it supports - SSE3 is slowest, AVX2 is fastest (New Xeon chips support AVX2 as of April 2018).
+2. Clone the RAxML_Astral_trees git files to your home directory (or wherever you like) (Note: '$' is your prompt, do not enter this character):
 
 ``` 
 $ git clone https://github.com/calacademy-research/RAxML_Astral_trees.git
 ```
-2. You will now have a directory named 'RAxML_Astral_trees' with all required scripts:
+3. You will now have a directory named 'RAxML_Astral_trees' with all required scripts:
 ```
 ~/RAxML_Astral_trees
 ```
-3. Make sure R is installed and that the R libraries ips and parallel are installed. Launch R at the command prompt (you should see a greater than symbol as your new prompt '>') and enter install.packages(c("ips", "parallel")):
+4. Make sure R is installed and that the R libraries ips and parallel are installed. Launch R at the command prompt (you should see a greater than symbol as your new prompt '>') and enter install.packages(c("ips", "parallel")):
 ```
 $ R
 >
@@ -30,7 +31,7 @@ $ R
 ```
 Printed and scrolling on screen, you will see the installation progress. You may get a message that one or both libraries already exists, which should be OK. If you get errors that you cannot resolve, you will have to consult your Sys Admin.
 
-4. There are many ways to organize your data, but the following is what I do. I create symlinks for all of the scripts in the phyluce alignment directory (my "working directory"), which contains all of your final uce nexus alignments, ~/ABySS/mafft-nexus-min75-taxa for e.g.:
+5. There are many ways to organize your data, but the following is what I do. I create symlinks for all of the scripts in the phyluce alignment directory (my "working directory"), which contains all of your final uce nexus alignments, ~/ABySS/mafft-nexus-min75-taxa for e.g.:
 ```
 $cd ~/ABySS/mafft-nexus-min75-taxa
 ~/ABySS/mafft-nexus-min75-taxa$ ln -s ~/RAxML_Astral_trees/astral_prep.sh astral_prep.sh
@@ -38,11 +39,11 @@ $cd ~/ABySS/mafft-nexus-min75-taxa
 ~/ABySS/mafft-nexus-min75-taxa$ ln -s ~/RAxML_Astral_trees/run_RAxML.sh run_RAxML.sh
 ~/ABySS/mafft-nexus-min75-taxa$ ln -s ~/RAxML_Astral_trees/RCmds RCmds
 ```
-5. Y0u must edit the RCmds R script to set your working directory. Our example here is ~/ABySS/mafft-nexus-min75-taxa. Open the RCmds script in your favorite editor (I use vi or nano) and edit the line setwd("/my/working/directory/") to match your working directory. For e.g.:
+6. Y0u must edit the RCmds R script to set your working directory. Our example here is ~/ABySS/mafft-nexus-min75-taxa. Open the RCmds script in your favorite editor (I use vi or nano) and edit the line setwd("/my/working/directory/") to match your working directory. For e.g.:
 ```
 $ setwd("~/ABySS/mafft-nexus-min75-taxa")
 ```
-6. You must also edit the RCmds R script to set the number of threads to match what is available on your server. The deafult line is 'final_raxml = mclapply(cmd, system, mc.cores=getOption("mc.cores", 48))  ### 48 threads'. If your server has 16 threads available then replace 48 with 16 as follows:
+7. You must also edit the RCmds R script to set the number of threads to match what is available on your server. The deafult line is 'final_raxml = mclapply(cmd, system, mc.cores=getOption("mc.cores", 48))  ### 48 threads'. If your server has 16 threads available then replace 48 with 16 as follows:
 ```
 $ final_raxml = mclapply(cmd, system, mc.cores=getOption("mc.cores", 16))  ### 16 threads
 ```
@@ -54,7 +55,7 @@ or launch htop, which will show all threads. If you do not have htop installed d
 ```
 $ sudo apt-get install htop
 ```
-7. You will need to edit the last line of the astral_run.sh file to match your prefered final tree name and the amount of memory in your system. The -Xmx100G flag tells java to use 100GB of RAM. Change this to match your system RAM. The last item on this line names your final Astral species tree. Edit as you like.
+8. You will need to edit the last line of the astral_run.sh file to match your prefered final tree name and the amount of memory in your system. The -Xmx100G flag tells java to use 100GB of RAM. Change this to match your system RAM. The last item on this line names your final Astral species tree. Edit as you like.
 ```
 java -Xmx100G -jar ~/ASTRAL/astral.5.5.6.jar -i tree_files/RAx_genetrees_merge.tre -b boot_trees/bootstrap.filedir.list.txt -r 100 -o My_AstralIII_sp_tree.tre
 
