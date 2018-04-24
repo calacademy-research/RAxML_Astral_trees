@@ -72,8 +72,8 @@ Then run:
 ```
 ~/ABySS/mafft-nexus-min75-taxa$ ./astral_prep.sh
 ```
-depending on your server and the number of alignments and taxa you have, this could take hours to days to copmplete.
-2. Once the astral_prep.sh run completes, run the astral-run.sh script:
+depending on your server and the number of alignments and taxa you have, this could take hours to days to complete.
+2. Once the astral_prep.sh run finishes, run the astral-run.sh script:
 ```
 ~/ABySS/mafft-nexus-min75-taxa$ ./astral_run.sh
 ```
